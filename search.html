@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" placeholder="enter state name" id="searchInput" />
+
+    <div
+      class="display"
+      style="background-color: aqua; width: 100%; height: 90vh"
+    >
+      <ul></ul>
+    </div>
+
+    <script>
+      const searchInput = document.getElementById("searchInput");
+      const display = document.querySelector(".display");
+      const ul = document.querySelector("ul");
+      // log the value of the input
+      let states = [
+        "Tokyo, Japan",
+        "Delhi, India",
+        "Shanghai, China",
+        "Sao Paulo, Brazil",
+        "Mumbai, India",
+        "Beijing, China",
+        "Cairo, Egypt",
+        "Dhaka, Bangladesh",
+        "Mexico City, Mexico",
+        "Osaka, Japan",
+        "Karachi, Pakistan",
+        "Chongqing, China",
+        "Istanbul, Turkey",
+        "Buenos Aires, Argentina",
+        "Kolkata, India",
+        "Lagos, Nigeria",
+        "Kinshasa, Democratic Republic of the Congo",
+        "Manila, Philippines",
+        "Rio de Janeiro, Brazil",
+        "Guangzhou, China",
+        "Lahore, Pakistan",
+        "Shenzhen, China",
+        "Bangalore, India",
+        "Moscow, Russia",
+        "Tianjin, China",
+        "Jakarta, Indonesia",
+        "London, United Kingdom",
+        "Lima, Peru",
+        "Bangkok, Thailand",
+        "New York City, United States",
+        "Chengdu, China",
+        "Nagoya, Japan",
+        "Ho Chi Minh City, Vietnam",
+        "Shenyang, China",
+        "Bogota, Colombia",
+        "Hong Kong, China",
+        "Wuhan, China",
+        "Hyderabad, India",
+        "Hangzhou, China",
+        "Rio de Janeiro, Brazil",
+        "Ahmedabad, India",
+        "Kuala Lumpur, Malaysia",
+        "Paris, France",
+        "Lisbon, Portugal",
+        "Santiago, Chile",
+        "Riyadh, Saudi Arabia",
+        "Madrid, Spain",
+        "Singapore, Singapore",
+        "Johannesburg, South Africa",
+        "Berlin, Germany",
+        "Abuja, Nigeria",
+        "Hanoi, Vietnam",
+        "Addis Ababa, Ethiopia",
+        "Sydney, Australia",
+        "Suzhou, China",
+        "Casablanca, Morocco",
+        "Melbourne, Australia",
+        "Rome, Italy",
+        "Cape Town, South Africa",
+        "Brisbane, Australia",
+        "Perth, Australia",
+        "Montreal, Canada",
+        "Toronto, Canada",
+        "Vancouver, Canada",
+        "Calgary, Canada",
+        "Ottawa, Canada",
+        "Edmonton, Canada",
+        "Quebec City, Canada",
+        "Winnipeg, Canada",
+        "Halifax, Canada",
+        "Victoria, Canada",
+        "Amsterdam, Netherlands",
+        "Rotterdam, Netherlands",
+        "The Hague, Netherlands",
+        "Utrecht, Netherlands",
+        "Eindhoven, Netherlands",
+        "Groningen, Netherlands",
+        "Maastricht, Netherlands",
+        "Stockholm, Sweden",
+        "Gothenburg, Sweden",
+        "Malmo, Sweden",
+        "Oslo, Norway",
+        "Bergen, Norway",
+        "Trondheim, Norway",
+        "Stavanger, Norway",
+        "Helsinki, Finland",
+        "Tampere, Finland",
+        "Oulu, Finland",
+        "Reykjavik, Iceland",
+        "Copenhagen, Denmark",
+        "Aarhus, Denmark",
+        "Odense, Denmark",
+        "Hamburg, Germany",
+        "Munich, Germany",
+        "Berlin, Germany",
+        "Cologne, Germany",
+        "Frankfurt, Germany",
+        "Stuttgart, Germany",
+        "Dusseldorf, Germany",
+      ];
+
+      searchInput.addEventListener("keyup", (e) => {
+        let input = e.target.value.toLowerCase();
+        let statesArray = states.filter((state) => {
+          return state.toLowerCase().includes(input);
+        });
+        console.log(statesArray);
+        display.style.display = "block";
+        if (input.length === 0) {
+          statesArray = [];
+          display.style.display = "none";
+        }
+        showStates(statesArray);
+      });
+
+      function showStates(statesArray) {
+        let li = "";
+        statesArray.forEach((state) => {
+          li += `<li>${state}</li>`;
+        });
+        ul.innerHTML = li;
+      }
+
+      ul.addEventListener("click", (e) => {
+        searchInput.value = e.target.textContent;
+        display.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
